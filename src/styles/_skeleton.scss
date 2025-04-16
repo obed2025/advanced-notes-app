@@ -1,0 +1,107 @@
+@use '@picocss/pico/scss/colors' as *;
+@use './notes' as n;
+
+$color-1: $purple-750;
+$color-2: $purple-950;
+
+.skeleton {
+	@include n.notes();
+	padding-bottom: 1.5rem;
+
+	&__note {
+		background-color: rgb($purple-50, 5%);
+		border: 2.5px solid rgb($purple-50, 5%);
+		height: fit-content;
+		border-radius: 0.5rem;
+		overflow: hidden;
+		padding: 1rem;
+
+		@media (prefers-color-scheme: light) {
+			background-color: rgb($color-1, 5%);
+			border: 2.5px solid rgb($color-1, 5%);
+		}
+	}
+
+	.note {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+
+		* {
+			background-color: rgb($purple-500, 50%);
+
+			@media (prefers-color-scheme: light) {
+				background-color: rgb($color-2, 5%);
+			}
+		}
+
+		& > * {
+			border-radius: var(--height);
+			height: var(--height);
+		}
+
+		&__title {
+			--height: 1.15rem;
+			animation: skeleton 2s ease-in-out infinite;
+		}
+
+		&__time {
+			--height: 0.5rem;
+			width: 45%;
+			animation: skeleton 2s ease-in-out infinite;
+		}
+
+		&__tags {
+			--height: 0.5rem;
+			display: grid;
+			grid-template-columns: repeat(3, 10%);
+			gap: 0.5rem;
+			background-color: transparent;
+		}
+
+		&__tag {
+			height: 100%;
+			animation: skeleton 2s ease-in-out infinite;
+		}
+
+		&__description {
+			height: 1.65rem;
+			width: 70%;
+			border-radius: 4px;
+			animation: skeleton 2s ease-in-out infinite;
+		}
+
+		&__buttons {
+			display: flex;
+			background-color: transparent;
+			gap: 1rem;
+			height: 1.75rem;
+		}
+
+		&__button {
+			background-color: rgb($purple-500, 50%);
+			height: 100%;
+			width: 30%;
+			border-radius: 2px;
+			animation: skeleton 2s ease-in-out infinite;
+
+			@media (prefers-color-scheme: light) {
+				background-color: rgb($color-2, 5%);
+			}
+		}
+	}
+}
+
+@keyframes skeleton {
+	50% {
+		background-color: rgb($purple-500, 20%);
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	@keyframes skeleton {
+		50% {
+			background-color: rgb($color-2, 20%);
+		}
+	}
+}

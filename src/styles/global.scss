@@ -1,0 +1,46 @@
+@forward './_skeleton';
+@forward './notes';
+@use './notes' as n;
+@use '@picocss/pico/scss/pico' with (
+	$theme-color: 'purple'
+);
+
+.new-note-form .buttons {
+	display: flex;
+	gap: 1rem;
+	justify-content: end;
+	align-items: center;
+
+	button,
+	a {
+		flex-basis: fit-content;
+		margin: 0;
+	}
+}
+
+.note-card {
+	display: flex;
+	gap: 1rem;
+
+	a {
+		border: none;
+	}
+}
+
+nav li.small-only {
+	display: none;
+}
+
+@media (width <= 410px) {
+	nav li.small-only {
+		display: block;
+	}
+
+	nav .responsive > li:not(.small-only) {
+		display: none;
+	}
+}
+
+.form-grid {
+	@include n.notes();
+}

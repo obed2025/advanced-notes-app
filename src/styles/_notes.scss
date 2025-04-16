@@ -1,0 +1,27 @@
+@use '@picocss/pico/scss/colors' as *;
+
+@mixin notes {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+	gap: 0.65rem;
+}
+
+.notes-container {
+	@include notes();
+
+	article {
+		display: flex;
+		flex-direction: column;
+		border: 2.5px solid rgb($purple-50, 5%);
+
+		.note-card {
+			flex-grow: 1;
+			display: flex;
+			align-items: flex-end;
+
+			a {
+				height: fit-content;
+			}
+		}
+	}
+}
