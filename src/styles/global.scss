@@ -44,3 +44,13 @@ nav li.small-only {
 .form-grid {
 	@include n.notes();
 }
+
+.not-found {
+	font-size: 4rem;
+	font-family: monospace;
+	text-align: center;
+
+	& + h2 {
+		text-align: center;
+	}
+}

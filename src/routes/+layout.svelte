@@ -4,6 +4,7 @@
 	import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 	let { children } = $props();
+	let search = $state('');
 </script>
 
 <svelte:head>
@@ -38,10 +39,18 @@
 
 {#snippet SearchBar()}
 	<!-- svelte-ignore a11y_no_redundant_roles -->
-	<fieldset role="group" class="search-bar">
-		<input type="text" id="search" placeholder="Search your notes....." />
-		<button>Search</button>
-	</fieldset>
+	<form action="/results">
+		<fieldset role="group" class="search-bar">
+			<input
+				name="search"
+				type="text"
+				id="search"
+				bind:value={search}
+				placeholder="Search your notes....."
+			/>
+			<button type="submit">Submit</button>
+		</fieldset>
+	</form>
 {/snippet}
 
 <main>

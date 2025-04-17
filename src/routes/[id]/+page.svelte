@@ -27,7 +27,7 @@
 			<h4 class="tags">
 				{#each note.tags as tag}
 					{#if tag}
-						<a href="/?tag={tag}">#{tag}</a>
+						<a href="/results?tag={tag}">#{tag}</a>
 					{/if}
 				{/each}
 			</h4>
@@ -42,8 +42,8 @@
 			</section>
 		</div>
 	{:else}
-		<h2>Note with id = {id} is not found !!</h2>
-		<a href="/">Go home</a>
+		<h1 class="not-found">404</h1>
+		<h2>Note not found !</h2>
 	{/if}
 {/await}
 
