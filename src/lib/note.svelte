@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Note } from '../utils/types';
 	import { getDate, dateOptions } from '../utils';
+	import { searchParams } from '../routes/global-state.svelte';
 
 	interface Props {
 		note: Note;
@@ -25,7 +26,7 @@
 	<h4 class="tags">
 		{#each note.tags as tag}
 			{#if tag}
-				<a href="/results?tag={tag}">#{tag}</a>
+				<a href="/results?tag={tag}" onclick={() => (searchParams.tag = tag)}>#{tag}</a>
 			{/if}
 		{/each}
 	</h4>

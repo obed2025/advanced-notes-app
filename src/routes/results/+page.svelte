@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import Notes from '$lib/notes.svelte';
+	import { searchParams } from '../global-state.svelte';
 
-	const tag = page.url.searchParams.get('tag');
-	const search = page.url.searchParams.get('search');
+	let tag = $derived(page.url.searchParams.get('tag') || searchParams.tag);
+	let search = $derived(page.url.searchParams.get('search') || searchParams.search);
 </script>
 
 {#if !tag && !search}

@@ -2,9 +2,12 @@
 	import '../styles/global.scss';
 	import Links from '$lib/links.svelte';
 	import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+	import { searchParams } from './global-state.svelte';
 
 	let { children } = $props();
 	let search = $state('');
+
+	const onsubmit = () => (searchParams.search = search);
 </script>
 
 <svelte:head>
@@ -39,7 +42,7 @@
 
 {#snippet SearchBar()}
 	<!-- svelte-ignore a11y_no_redundant_roles -->
-	<form action="/results">
+	<form action="/results" {onsubmit}>
 		<fieldset role="group" class="search-bar">
 			<input
 				name="search"
